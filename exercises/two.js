@@ -20,17 +20,10 @@ module.exports = function(mongoose, Checkout, Movie) {
 				{movieId:{"$in":movieArr}}
 				]
 	 		}
-	 	);
-
- 		Checkout.aggregate([
-	    { $group : 
-	    	{
-		    	_id : "$userId"
-	    	}
-	    	
-		}],
+	 	)
+	 	.distinct("userId",
  			(err, data)=> {
- 				console.log(data);		
+ 				console.log(data.length);		
  			
  	});
 
